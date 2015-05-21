@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Title: Telnet Command Wrapper
+# Desc: For AP ServerGuard
+# Author: Archpoet
+
+host=$1
+port=$2
+pass=$3
+
+# A, B, C
+# Easy as 1, 2, 3
+# Simple as DO RE ME Baby--
+shift ; shift ; shift
+
+expect << EOF
+spawn telnet $host $port
+expect -re "password:"
+send "$pass\r"
+sleep 1
+expect -re "to end session"
+send "$@\r"
+sleep 1
+expect -re "(\r|\n)"
+send "exit\r"
+EOF
