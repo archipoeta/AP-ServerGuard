@@ -1,0 +1,29 @@
+### BEGIN INIT INFO
+# Provides:          ap_serverguard
+# Required-Start:    $local_fs $remote_fs $network
+# Required-Stop:     $local_fs $remote_fs $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# X-Interactive:     true
+# Short-Description: Start/Stop AP-ServerGuard
+### END INIT INFO
+
+command=`which ap_serverguard`
+if [ "$command" == "" ]; then
+	command="./ap_serverguard.pl"
+fi
+
+case "$1" in
+    start)
+		$command -daemon
+        ;;
+
+    stop)
+        kill -TERM `cat /var/run/ap_serverguard.pid`
+        ;;
+
+    restart)
+        $0 stop
+        $0 start
+        ;;
+esac

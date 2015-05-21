@@ -1,0 +1,150 @@
+##
+#	Title: AP-ServerGuard - Config
+#	Desc: Config file for AP-ServerGuard
+#	Author: Archpoet
+#	Email: archipoetae@gmail.com
+#	Date: 2015.05.15
+##
+
+#
+# INSTANCES
+#
+
+# Main instances dir // default
+$config->{instances_dir}	= "/home/sdtd/instances";
+
+# Instances
+$config->{instances} = [
+	{
+		'instance_name'	=> 'myinstance',
+		'telnet_host'	=> 'localhost',
+		'telnet_port'	=> 8081,
+		'telnet_pass'	=> 'password',
+		'output_log'	=> $config->{instances_dir} ."/myinstance/logs/current_output_log.txt",
+	},
+];
+
+#
+# COLORS
+#
+
+# Default Chat Color
+$config->{default_chat_color} = "ffffff";
+
+# Generic Messages Color
+$config->{general_msg_color} = "ff6611";
+
+# Welcome Message Color
+$config->{welcome_msg_color} = "5522ff";
+
+# Warning Message Color
+$config->{warn_msg_color} = "ff3311";
+
+#
+# WELCOME NOTIFICATIONS
+#
+
+# Enable Welcome Notifications
+$config->{welcome_players} = 1;
+
+# Welcome Message
+$config->{welcome_msg} = [
+	"Welcome to The Server, %PLAYER%! :)",
+	"This server is protected by AP ServerGuard.",
+	"PVP Mode: %PVP_MODE%",
+	"Enforcement: %ENF_MODES%",
+];
+
+#
+# ANNOUNCEMENTS
+#
+
+# Enable Announcements
+$config->{do_announce}	= 1;
+
+# Notifications List
+$config->{announcements} = {
+	'Join us on teamspeak at ts3.somehost.net!' => 60, # minutes
+	'Check out the repo at https://github.com/archipoeta/AP-ServerGuard' => 45,
+};
+
+#
+# BANNED WORDS
+#
+
+# Enable Word Filter
+$config->{word_filter}	= 1;
+# Banned Words List
+$config->{banned_words} = [
+	"Sandwich",
+];
+
+#
+# PVP MODE
+#
+
+# 0 = Full PVP -- No infractions for player kills
+# 1 = Enforce Pure PVE -- All player kills count as infractions
+# 2 = Hybrid PVP/PVE -- Toggle /pvp -or- Use /report
+$config->{pvp_mode}	= 2;
+
+# Ok to /pvp DISABLED after how many minutes?
+$config->{pvp_cooldown} = 5;
+
+#
+# WARN
+#
+
+# should we warn people that commit infractions?
+$config->{warn_users}	= 1;
+# after how many?
+$config->{warn_after}	= 1;
+
+# Warning Message
+$config->{warn_msg} = [
+	"WARNING: %PLAYER%, you have committed an infractable offense.",
+	"%MORE_INF%",
+	"Your Infractions: %INF_COUNT%",
+	"Enforcement Policy: %ENF_MODES%",
+];
+
+#
+# KICK
+#
+
+# should we kick people that commit infractions?
+$config->{kick_users}	= 1;
+# after how many?
+$config->{kick_after}	= 3;
+
+# Kick Message
+$config->{kick_msg} = [
+	"WARNING: %PLAYER%, you will be kicked in 10 seconds.",
+	"%MORE_INF%",
+	"Your Infractions: %INF_COUNT%",
+	"Enforcement Policy: %ENF_MODES%",
+];
+
+#
+# BAN
+#
+
+# so, then should we ban people that commit infractions?
+$config->{ban_users}	= 1;
+# after how many?
+$config->{ban_after}	= 4;
+
+# Ban Message
+$config->{ban_msg} = [
+	"WARNING: %PLAYER%, you will be banned for %DURATION% minutes.",
+	"%MORE_INF%",
+	"Your Infractions: %INF_COUNT%",
+	"Enforcement Policy: %ENF_MODES%",
+];
+
+# ban duration in minutes
+$config->{ban_duration} = 15; # minutes
+
+# each additional infraction > $ban_after will result in
+# this being multiplied to $ban_duration
+$config->{ban_multiplier} = 4; # x ban_duration ) * ( $infractions - $ban_after )
