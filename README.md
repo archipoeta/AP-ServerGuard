@@ -31,10 +31,10 @@ to protect multiple game server instances, and requires no dependencies other th
 In game, the following commands are implemented:
 
 ```shell
-    * AP ServerGuard Command Help:
-        /pvp     - Toggle PVP mode on and off.
-        /report  - Report unwated PVP action to infract your killer.
-        /help    - This usage menu. :)
+   * AP ServerGuard Command Help:
+       /pvp     - Toggle PVP mode on and off.
+       /report  - Report unwated PVP action to infract your killer.
+       /help    - This usage menu. :)
 ```
 
 ### Development
